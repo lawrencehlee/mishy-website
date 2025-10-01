@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="description" content="A San Diego-based alt rock band.">
+    <meta name=”robots” content="index">
+    <link rel="stylesheet" href="/assets/index.css"/>
+    <title>{{ title }}</title>
+</head>
+<body class="flex flex-col justify-start items-center bg-black text-white font-primary">
+<div class="flex flex-col justify-start items-center h-[75vh] lg:h-screen w-screen bg-cover bg-center"
+     style="background-image: url('{{ heroBackgroundImg }}')">
+    <nav class="my-8 flex justify-center flex-row gap-4">
+        {% for nav in navs %}
+            <a class="hover:outline-2 rounded-md py-1 px-2" href="{{ nav.link }}">{{ nav.name }}</a>
+        {% endfor %}
+    </nav>
+    <img src="{{ logoImg }}" alt="logo"
+         class="w-80 my-4 brightness-125"/>
+    <h1 class="text-3xl my-4">Debut album out now!</h1>
+    <div class="flex-grow">filler</div>
+    <div class="flex flex-row gap-8 justify-center mb-8">
+        {% for link in links %}
+            <a href="{{ link.url }}">
+                <svg class="w-[36px] fill-white" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <title>{{ link.title }}</title>
+                    <path d="{{ link.path }}"/>
+                </svg>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+<div class="w-screen h-max bg-cover bg-center w-screen flex flex-col items-center py-8"
+     style="background-image: url('{{ sectionBackgroundImg }}')">
+    <div id="about" class="flex flex-col justify-start items-center px-12 gap-8 max-w-3xl mb-8">
+        <h1 class="text-3xl">About</h1>
+        <img class="w-100 rounded-md" src="{{ aboutImg }}" alt="band-clubhouse"/>
+        <p class="text-md leading-7 max-w-3xl">
+            Mishy is (was?) an alt rock band based out of San Diego, California. Chris (vocals/sax) and
+            Lawrence (drums/vocals), friends from their college days in the UCSD Pepband, reunited in 2022 with a
+            simple idea: "Let's make some music together." And joined by Mike Reyes (guitar/vocals) and Mike Vargo
+            (bass), that's exactly what they did, with their debut album releasing in October 2025.
+        </p>
+    </div>
+    <div id="band" class="flex flex-col justify-start items-center px-12 gap-8 max-w-3xl">
+        <h1 class="text-3xl">The Band</h1>
+        <div class="grid grid-cols-1 lg:grid-cols-[repeat(2,_24rem)] gap-8">
+            {% for member in members %}
+                <div class="flex flex-col items-center">
+                    <img class="w-100 rounded-md mb-4" src="{{ member.img }}" alt="{{ member.name }}"/>
+                    <h3 class="text-xl mb-1">{{ member.name }}</h3>
+                    <h4 class="text-lg mb-2">{{ member.role }}</h4>
+                    <p class="text-md leading-7">{{ member.bio }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
