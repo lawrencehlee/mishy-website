@@ -3,3 +3,7 @@
 @theme {
     --font-primary: "Helvetica", sans-serif;
 }
+
+#band a {
+    text-decoration: underline;
+}
